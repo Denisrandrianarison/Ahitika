@@ -8,7 +8,9 @@ COPY resources ./resources
 RUN npm run build
 
 # Stage 2: Install PHP dependencies
-FROM composer:2 AS composer-builder
+FROM php:8.2-cli-alpine AS composer-builder
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+RUN apk add --no-cache git unzip libzip-dev icu-dev && docker-php-ext-install zip intl
 WORKDIR /app
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
