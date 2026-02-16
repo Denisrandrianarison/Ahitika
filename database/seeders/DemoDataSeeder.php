@@ -10,6 +10,10 @@ class DemoDataSeeder extends Seeder
 {
     public function run(): void
     {
+        if (Category::count() > 0) {
+            return;
+        }
+
         // Create Categories
         $categories = [
             ['nom' => 'Vêtements Femme', 'slug' => 'vetements-femme'],

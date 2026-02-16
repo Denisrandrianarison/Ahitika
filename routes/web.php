@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ShopController;
-use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 // Shop Routes

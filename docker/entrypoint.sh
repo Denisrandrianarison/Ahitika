@@ -17,7 +17,10 @@ php artisan view:cache
 php artisan storage:link --force 2>/dev/null || true
 
 # Run migrations
-php artisan migrate --force --seed
+php artisan migrate --force
+
+# Seed only if tables are empty
+php artisan db:seed --force 2>/dev/null || true
 
 echo "Application ready!"
 
