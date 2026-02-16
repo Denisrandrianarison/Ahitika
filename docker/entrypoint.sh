@@ -3,6 +3,11 @@ set -e
 
 cd /var/www/html
 
+# Create .env from environment variables if it doesn't exist
+if [ ! -f .env ]; then
+    touch .env
+fi
+
 # Generate app key if not set
 if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
